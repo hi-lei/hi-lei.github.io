@@ -14,17 +14,17 @@ import { localizePath, t } from "@/i18n";
 
 export const getStaticPaths = (async ({ paginate }) => {
   const posts = await getCollection("blog", ({ data }) => !data.draft);
-  return paginate(getSortedPosts(getLocalizedPosts(posts, "en")), {
+  return paginate(getSortedPosts(getLocalizedPosts(posts, "cn")), {
     pageSize: SITE.postPerPage,
   });
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
-const copy = t("en");
+const copy = t("cn");
 ---
 
 <Layout
-  title={`Posts | ${SITE.title}`}
+  title={`${copy.pages.postsTitle} | ${SITE.title}`}
   langLinks={{
     en: localizePath("/posts/", "en"),
     cn: localizePath("/posts/", "cn"),

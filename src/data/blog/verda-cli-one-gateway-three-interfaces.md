@@ -11,6 +11,8 @@ tags:
   - mcp
   - infrastructure
 description: A personal view on how verda-cli became a unified gateway for humans, AI agents, and IDE integrations — and why CLI tools may become one of the defining interfaces for AI-era infrastructure.
+locale: en
+translationKey: verda-cli-one-gateway-three-interfaces
 ---
 
 _I'm the author of [verda-cli](https://github.com/verda-cloud/verda-cli) and [verdagostack](https://github.com/verda-cloud/verdagostack) at [Verda Cloud](https://verda.com). This post reflects my personal view, not a company position, on how our CLI evolved into a shared interface for humans, AI agents, and IDE workflows._

@@ -1,0 +1,37 @@
+---
+import {
+  DEFAULT_LOCALE,
+  LOCALE_LABELS,
+  localizePath,
+  type Locale,
+} from "@/i18n";
+
+type Props = {
+  currentPath: string;
+  currentLocale: Locale;
+  langLinks?: Partial<Record<Locale, string>>;
+};
+
+const { currentPath, currentLocale, langLinks = {} } = Astro.props;
+
+const getHref = (locale: Locale) =>
+  langLinks[locale] ?? localizePath(currentPath, locale);
+---
+
+<div class="join" aria-label="Language switcher">
+  {
+    (["en", "cn"] as const).map(locale => (
+      <a
+        href={getHref(locale)}
+        hreflang={locale === DEFAULT_LOCALE ? "en" : "zh-Hans"}
+        class:list={[
+          "btn join-item btn-sm",
+          locale === currentLocale ? "btn-neutral" : "btn-ghost",
+        ]}
+        aria-current={locale === currentLocale ? "true" : undefined}
+      >
+        {LOCALE_LABELS[locale]}
+      </a>
+    ))
+  }
+</div>

@@ -1,0 +1,27 @@
+---
+type Props = {
+  title: string;
+  desc: string;
+  url: string;
+  target?: "_self" | "_blank";
+  badge?: string;
+  meta?: string;
+};
+
+const { title, desc, url, badge, target = "_blank", meta } = Astro.props;
+---
+
+<div
+  class="rounded-lg bg-base-100 transition ease-in-out hover:scale-[102%] hover:shadow-xl"
+>
+  <a href={url} target={target}>
+    <div class="py-4">
+      <h2 class="text-lg font-bold">
+        {title}
+        {badge && <span class="mx-2 badge badge-secondary">{badge}</span>}
+      </h2>
+      {meta && <p class="pt-1 text-sm opacity-70">{meta}</p>}
+      <p class="py-1 text-base">{desc}</p>
+    </div>
+  </a>
+</div>

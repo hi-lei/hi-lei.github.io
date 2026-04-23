@@ -1,0 +1,22 @@
+---
+type Props = {
+  title: string;
+  subtitle: string;
+};
+
+const { title, subtitle } = Astro.props;
+---
+
+<div class="flex">
+  <div>
+    <span class="mt-1 block h-4 w-4 rounded-full bg-primary"></span>
+    <span class="block h-full w-[2px] translate-x-[7px] bg-primary"></span>
+  </div>
+  <div class="px-5">
+    <h3 class="mb-1 font-semibold">{title}</h3>
+    <span class="text-sm font-light">{subtitle}</span>
+    <p class="my-2 text-justify">
+      <slot />
+    </p>
+  </div>
+</div>

@@ -10,16 +10,14 @@ import { getLocalizedPosts } from "@/utils/localizedPosts";
 import { SITE } from "@/config";
 import { localizePath, t } from "@/i18n";
 
-// Redirect to 404 page if `showArchives` config is false
 if (!SITE.showArchives) {
   return Astro.redirect("/404");
 }
 
 const posts = getLocalizedPosts(
   await getCollection("blog", ({ data }) => !data.draft),
-  "en"
+  "cn"
 );
-const copy = t("en");
 
 const months = [
   "January",
@@ -35,10 +33,12 @@ const months = [
   "November",
   "December",
 ];
+
+const copy = t("cn");
 ---
 
 <Layout
-  title={`Archives | ${SITE.title}`}
+  title={`${copy.pages.archivesTitle} | ${SITE.title}`}
   langLinks={{
     en: localizePath("/archives/", "en"),
     cn: localizePath("/archives/", "cn"),

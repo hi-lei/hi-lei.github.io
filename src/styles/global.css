@@ -1,70 +1,89 @@
 @import "tailwindcss";
+@plugin "daisyui" {
+  themes: lofi --default;
+}
 @import "./typography.css";
 
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
-
-:root,
-html[data-theme="light"] {
-  --background: #fdfdfd;
-  --foreground: #282728;
-  --accent: #006cac;
-  --muted: #e6e6e6;
-  --border: #ece9e9;
-}
-
-html[data-theme="dark"] {
-  --background: #212737;
-  --foreground: #eaedf3;
-  --accent: #ff6b01;
-  --muted: #343f60;
-  --border: #ab4b08;
-}
-
 @theme inline {
-  --font-app: var(--font-google-sans-code);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-accent: var(--accent);
-  --color-muted: var(--muted);
-  --color-border: var(--border);
+  --font-app:
+    Inter, "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --color-background: var(--color-base-100);
+  --color-surface: var(--color-base-100);
+  --color-surface-strong: var(--color-base-100);
+  --color-foreground: var(--color-base-content);
+  --color-foreground-soft: color-mix(
+    in srgb,
+    var(--color-base-content) 72%,
+    white
+  );
+  --color-accent: var(--color-primary);
+  --color-accent-soft: color-mix(in srgb, var(--color-primary) 15%, white);
+  --color-muted: var(--color-base-200);
+  --color-border: var(--color-base-300);
 }
 
 @layer base {
   * {
-    @apply border-border outline-accent/75;
-    scrollbar-width: auto;
-    scrollbar-color: var(--color-muted) transparent;
+    @apply outline-primary/70;
   }
+
   html {
-    @apply overflow-y-scroll scroll-smooth;
+    @apply overflow-y-scroll bg-base-100 text-base-content;
   }
+
   body {
-    @apply flex min-h-svh flex-col bg-background font-app text-foreground selection:bg-accent/75 selection:text-background;
+    min-height: 100svh;
+    font-family: var(--font-app);
+    @apply bg-base-100 text-base-content;
   }
+
   a,
   button {
-    @apply outline-offset-1 outline-accent focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-dashed;
+    @apply outline-offset-2 focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-dashed;
   }
+
   button:not(:disabled),
   [role="button"]:not(:disabled) {
     cursor: pointer;
   }
 }
 
-@utility max-w-app {
-  @apply max-w-3xl;
+.skip-link {
+  @apply absolute top-4 left-4 z-50 -translate-y-20 rounded-md bg-base-300 px-4 py-2 transition-transform focus:translate-y-0;
 }
 
-@utility app-layout {
-  @apply mx-auto w-full max-w-app px-4;
+.app-layout {
+  @apply mx-auto w-full max-w-[900px] px-6;
 }
 
-.active-nav {
-  @apply underline decoration-wavy decoration-2 underline-offset-8;
+.page-shell {
+  @apply mx-auto w-full max-w-[900px] p-6 pt-10;
 }
 
-/* Source: https://piccalil.li/blog/a-more-modern-css-reset/ */
-/* Anything that has been anchored to should have extra scroll margin */
-:target {
-  scroll-margin-block: 1rem;
+.page-panel {
+  @apply w-full;
+}
+
+.page-title {
+  @apply text-3xl font-bold md:text-4xl;
+}
+
+.page-desc {
+  @apply mt-3 text-base opacity-75;
+}
+
+.breadcrumb-shell {
+  @apply mx-auto w-full max-w-[900px] px-6 pt-6;
+}
+
+.breadcrumb-list {
+  @apply flex flex-wrap items-center gap-2 text-sm opacity-70;
+}
+
+.pagination-shell {
+  @apply my-10 flex items-center justify-center gap-4;
+}
+
+.pagination-chip {
+  @apply btn btn-outline btn-sm;
 }

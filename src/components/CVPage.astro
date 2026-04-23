@@ -1,0 +1,207 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import CvTimelineItem from "@/components/CvTimelineItem.astro";
+import { SITE } from "@/config";
+import { localizePath, t, type Locale } from "@/i18n";
+
+type Props = {
+  locale: Locale;
+};
+
+const { locale } = Astro.props;
+const copy = t(locale);
+
+const content =
+  locale === "cn"
+    ? {
+        profileTitle: "简介",
+        profile:
+          "我是一名系统架构师和 Go 工程师，长期关注 GPU 云基础设施、CLI 工具链，以及 AI agent 与开发者工作流的接口设计。过去几年，我主要在把基础设施能力、开发者体验和 AI 原生交互方式整合到同一个平台体验里。",
+        experienceTitle: "经历",
+        experience: [
+          {
+            title: "System Architect / Backend Lead",
+            subtitle:
+              "Verda Cloud | GPU cloud infrastructure, CLI, and platform systems",
+            body: "负责 GPU 云平台中的推理、容器 serverless、计费和平台接口设计，同时推动 verda-cli、verdagostack 与 Go SDK 形成统一的开发者入口。",
+          },
+          {
+            title: "Architecture & Backend Lead",
+            subtitle:
+              "Takomo.ai | Multimodal AI platform and serverless runtime",
+            body: "负责多模态 AI 产品的云原生架构、serverless 运行时和动态 API 系统，重点放在可靠性、可扩展性和开发者体验。",
+          },
+        ],
+        openSourceTitle: "开源与产品",
+        openSource: [
+          {
+            title: "verda-cli",
+            subtitle: "CLI / MCP / IDE gateway",
+            body: "把 human, AI agent, 和 IDE workflow 统一到同一个 command surface，减少多入口系统的集成成本。",
+          },
+          {
+            title: "verdagostack",
+            subtitle: "Shared Go foundation",
+            body: "沉淀 terminal UI、wizard engine、server、observability 等底层模块，支撑 CLI 和后端能力复用。",
+          },
+          {
+            title: "verdacloud-sdk-go",
+            subtitle: "Go SDK",
+            body: "作为平台 Go 侧集成层，服务于基础设施控制面和开发者工具链。",
+          },
+        ],
+        focusTitle: "当前关注",
+        focus: [
+          "GPU cloud infrastructure",
+          "AI agents and infrastructure workflows",
+          "CLI and terminal-first developer experience",
+          "AI-agent workflows and MCP integrations",
+          "Go backend architecture",
+        ],
+        skillsTitle: "技能",
+        skills: [
+          "Go",
+          "TypeScript",
+          "Astro",
+          "Docker",
+          "Kubernetes",
+          "PostgreSQL",
+          "Redis",
+          "gRPC",
+          "REST APIs",
+          "Serverless",
+          "Observability",
+          "System Design",
+        ],
+      }
+    : {
+        profileTitle: "Profile",
+        profile:
+          "I am a system architect and Go engineer focused on GPU cloud infrastructure, CLI tooling, and the interface between AI agents and developer workflows. Over the last few years, my work has centered on bringing infrastructure capabilities, developer experience, and AI-native interaction models into a single platform experience.",
+        experienceTitle: "Experience",
+        experience: [
+          {
+            title: "System Architect / Backend Lead",
+            subtitle:
+              "Verda Cloud | GPU cloud infrastructure, CLI, and platform systems",
+            body: "Leading architecture across inference, container serverless, billing, and platform interfaces while shaping verda-cli, verdagostack, and the Go SDK into a unified developer-facing gateway.",
+          },
+          {
+            title: "Architecture & Backend Lead",
+            subtitle:
+              "Takomo.ai | Multimodal AI platform and serverless runtime",
+            body: "Built cloud-native architecture, serverless runtime capabilities, and dynamic API systems for multimodal AI products with a strong emphasis on reliability, scalability, and developer experience.",
+          },
+        ],
+        openSourceTitle: "Open Source and Products",
+        openSource: [
+          {
+            title: "verda-cli",
+            subtitle: "CLI / MCP / IDE gateway",
+            body: "A single command surface that connects humans, AI agents, and IDE workflows to the same infrastructure operations model.",
+          },
+          {
+            title: "verdagostack",
+            subtitle: "Shared Go foundation",
+            body: "A reusable foundation for terminal UI, wizard engines, servers, and observability patterns shared across CLI and backend work.",
+          },
+          {
+            title: "verdacloud-sdk-go",
+            subtitle: "Go SDK",
+            body: "The Go integration layer for platform APIs and the broader developer toolchain around Verda Cloud.",
+          },
+        ],
+        focusTitle: "Current Focus",
+        focus: [
+          "GPU cloud infrastructure",
+          "AI agents and infrastructure workflows",
+          "CLI and terminal-first developer experience",
+          "AI-agent workflows and MCP integrations",
+          "Go backend architecture",
+        ],
+        skillsTitle: "Skills",
+        skills: [
+          "Go",
+          "TypeScript",
+          "Astro",
+          "Docker",
+          "Kubernetes",
+          "PostgreSQL",
+          "Redis",
+          "gRPC",
+          "REST APIs",
+          "Serverless",
+          "Observability",
+          "System Design",
+        ],
+      };
+---
+
+<Layout
+  title={`${copy.pages.cvTitle} | ${SITE.title}`}
+  description={copy.pages.cvDesc}
+  langLinks={{
+    en: localizePath("/cv/", "en"),
+    cn: localizePath("/cv/", "cn"),
+  }}
+>
+  <Header />
+
+  <main id="main-content" class="page-shell">
+    <div class="mb-5">
+      <div class="w-full text-2xl font-bold">{content.profileTitle}</div>
+    </div>
+
+    <div class="mb-10 text-justify text-base leading-7">
+      {content.profile}
+    </div>
+
+    <div class="mb-5">
+      <div class="w-full text-2xl font-bold">{content.experienceTitle}</div>
+    </div>
+
+    <div class="mb-10 grid gap-4">
+      {
+        content.experience.map(item => (
+          <CvTimelineItem title={item.title} subtitle={item.subtitle}>
+            {item.body}
+          </CvTimelineItem>
+        ))
+      }
+    </div>
+
+    <div class="mb-5">
+      <div class="w-full text-2xl font-bold">{content.openSourceTitle}</div>
+    </div>
+
+    <div class="mb-10 grid gap-4">
+      {
+        content.openSource.map(item => (
+          <CvTimelineItem title={item.title} subtitle={item.subtitle}>
+            {item.body}
+          </CvTimelineItem>
+        ))
+      }
+    </div>
+
+    <div class="mb-5">
+      <div class="w-full text-2xl font-bold">{content.focusTitle}</div>
+    </div>
+
+    <ul class="mb-10 list-disc columns-1 gap-2 pl-6 text-base md:columns-2">
+      {content.focus.map(item => <li class="mb-2">{item}</li>)}
+    </ul>
+
+    <div class="mb-5">
+      <div class="w-full text-2xl font-bold">{content.skillsTitle}</div>
+    </div>
+
+    <ul class="list-disc columns-2 gap-2 pl-6 md:columns-4">
+      {content.skills.map(skill => <li class="mb-2">{skill}</li>)}
+    </ul>
+  </main>
+
+  <Footer />
+</Layout>

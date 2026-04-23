@@ -1,33 +1,33 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { slugifyStr } from "@/utils/slugify";
-import { getPath } from "@/utils/getPath";
+import { getLocaleFromPath } from "@/i18n";
+import { getLocalizedPostPath } from "@/utils/localizedPosts";
 import Datetime from "./Datetime.astro";
 
 type Props = {
   variant?: "h2" | "h3";
 } & CollectionEntry<"blog">;
 
-const { variant: Heading = "h2", id, data, filePath } = Astro.props;
+const { variant: Heading = "h2", data } = Astro.props;
+const locale = getLocaleFromPath(Astro.url.pathname);
 
 const { title, description, ...props } = data;
 ---
 
-<li class="my-6">
-  <a
-    href={getPath(id, filePath)}
-    class:list={[
-      "inline-block text-lg font-medium text-accent",
-      "decoration-dashed underline-offset-4 hover:underline",
-      "focus-visible:no-underline focus-visible:underline-offset-0",
-    ]}
-  >
+<li
+  class="rounded-lg bg-base-100 p-5 transition duration-150 ease-in-out hover:scale-[101%] hover:shadow-lg"
+>
+  <a href={getLocalizedPostPath(Astro.props, locale)} class="block">
     <Heading
       style={{ viewTransitionName: slugifyStr(title.replaceAll(".", "-")) }}
+      class="text-xl font-bold"
     >
       {title}
     </Heading>
+    <div class="mt-2 text-sm opacity-70">
+      <Datetime {...props} />
+    </div>
+    <p class="mt-3">{description}</p>
   </a>
-  <Datetime {...props} />
-  <p>{description}</p>
 </li>

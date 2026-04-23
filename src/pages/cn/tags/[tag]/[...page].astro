@@ -14,7 +14,7 @@ import { getLocalizedPosts } from "@/utils/localizedPosts";
 import { localizePath, t } from "@/i18n";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-  const posts = getLocalizedPosts(await getCollection("blog"), "en");
+  const posts = getLocalizedPosts(await getCollection("blog"), "cn");
   const tags = getUniqueTags(posts);
 
   return tags.flatMap(({ tag, tagName }) => {
@@ -31,11 +31,11 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 const params = Astro.params;
 const { tag } = params;
 const { page, tagName } = Astro.props;
-const copy = t("en");
+const copy = t("cn");
 ---
 
 <Layout
-  title={`Tag: ${tagName} | ${SITE.title}`}
+  title={`${copy.pages.tagPrefix} ${tagName} | ${SITE.title}`}
   langLinks={{
     en: localizePath(`/tags/${tag}/`, "en"),
     cn: localizePath(`/tags/${tag}/`, "cn"),
@@ -47,7 +47,6 @@ const copy = t("en");
     titleTransition={tag}
     pageDesc={copy.pages.tagDesc(tagName)}
   >
-    <h1 slot="title" transition:name={tag}>{`Tag:${tag}`}</h1>
     <ul>
       {page.data.map(data => <Card {...data} />)}
     </ul>

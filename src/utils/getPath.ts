@@ -13,6 +13,12 @@ export function getPath(
   filePath: string | undefined,
   includeBase = true
 ) {
+  const normalizedFileName = filePath
+    ?.split("/")
+    .slice(-1)[0]
+    ?.replace(/\.md$/, "")
+    .replace(/\.cn$/, "");
+
   const pathSegments = filePath
     ?.replace(BLOG_PATH, "")
     .split("/")
@@ -23,9 +29,12 @@ export function getPath(
 
   const basePath = includeBase ? "/posts" : "";
 
-  // Making sure `id` does not contain the directory
   const blogId = id.split("/");
-  const slug = blogId.length > 0 ? blogId.slice(-1) : blogId;
+  const slug = normalizedFileName
+    ? [slugifyStr(normalizedFileName)]
+    : blogId.length > 0
+      ? blogId.slice(-1)
+      : blogId;
 
   // If not inside the sub-dir, simply return the file path
   if (!pathSegments || pathSegments.length < 1) {

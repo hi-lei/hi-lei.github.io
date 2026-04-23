@@ -12,19 +12,17 @@ type Props = {
 export async function getStaticPaths() {
   const posts = getLocalizedPosts(
     await getCollection("blog", ({ data }) => !data.draft),
-    "en"
+    "cn"
   );
-  const postResult = posts.map(post => ({
+  return posts.map(post => ({
     params: { slug: getPath(post.id, post.filePath, false) },
     props: { post },
   }));
-
-  return postResult;
 }
 
 const { post } = Astro.props;
 
-const posts = getLocalizedPosts(await getCollection("blog"), "en");
+const posts = getLocalizedPosts(await getCollection("blog"), "cn");
 const sortedPosts = getSortedPosts(posts);
 ---
 

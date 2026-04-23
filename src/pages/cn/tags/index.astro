@@ -11,13 +11,12 @@ import { getLocalizedPosts } from "@/utils/localizedPosts";
 import { localizePath, t } from "@/i18n";
 
 const posts = await getCollection("blog");
-
-let tags = getUniqueTags(getLocalizedPosts(posts, "en"));
-const copy = t("en");
+const tags = getUniqueTags(getLocalizedPosts(posts, "cn"));
+const copy = t("cn");
 ---
 
 <Layout
-  title={`Tags | ${SITE.title}`}
+  title={`${copy.pages.tagsTitle} | ${SITE.title}`}
   langLinks={{
     en: localizePath("/tags/", "en"),
     cn: localizePath("/tags/", "cn"),

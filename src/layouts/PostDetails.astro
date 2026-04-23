@@ -11,9 +11,14 @@ import BackButton from "@/components/BackButton.astro";
 import BackToTopButton from "@/components/BackToTopButton.astro";
 import { getPath } from "@/utils/getPath";
 import { slugifyStr } from "@/utils/slugify";
+import {
+  findTranslatedPost,
+  getLocalizedPostPath,
+} from "@/utils/localizedPosts";
 import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
 import IconChevronRight from "@/assets/icons/IconChevronRight.svg";
 import { SITE } from "@/config";
+import { getLocaleFromPath, localizePath, t } from "@/i18n";
 
 type Props = {
   post: CollectionEntry<"blog">;
@@ -21,6 +26,8 @@ type Props = {
 };
 
 const { post, posts } = Astro.props;
+const locale = getLocaleFromPath(Astro.url.pathname);
+const copy = t(locale);
 
 const {
   title,
@@ -65,6 +72,10 @@ const layoutProps = {
   canonicalURL,
   ogImage,
   scrollSmooth: true,
+  langLinks: {
+    en: getLocalizedPostPath(findTranslatedPost(posts, post, "en"), "en"),
+    cn: getLocalizedPostPath(findTranslatedPost(posts, post, "cn"), "cn"),
+  },
 };
 
 /* ========== Prev/Next Posts ========== */
@@ -87,32 +98,34 @@ const nextPost =
   <BackButton />
   <main
     id="main-content"
-    class:list={["app-layout pb-12", { "mt-8": !SITE.showBackButton }]}
+    class:list={["page-shell pb-12", { "mt-8": !SITE.showBackButton }]}
     data-pagefind-body
   >
-    <h1
-      transition:name={slugifyStr(title.replaceAll(".", "-"))}
-      class="inline-block text-2xl font-bold text-accent sm:text-3xl"
-    >
-      {title}
-    </h1>
-    <div class="my-2 flex items-center gap-2">
-      <Datetime {pubDatetime} {modDatetime} {timezone} size="lg" />
-      <span
-        aria-hidden="true"
-        class:list={[
-          "max-sm:hidden",
-          { hidden: !SITE.editPost.enabled || hideEditPost },
-        ]}>|</span
+    <section class="page-panel">
+      <h1
+        transition:name={slugifyStr(title.replaceAll(".", "-"))}
+        class="inline-block text-3xl font-bold text-accent md:text-4xl"
       >
-      <EditPost {hideEditPost} {post} class="max-sm:hidden" />
-    </div>
-    <article
-      id="article"
-      class="app-prose mt-8 w-full max-w-app prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg)"
-    >
-      <Content />
-    </article>
+        {title}
+      </h1>
+      <div class="my-3 flex items-center gap-2 text-foreground-soft">
+        <Datetime {pubDatetime} {modDatetime} {timezone} size="lg" />
+        <span
+          aria-hidden="true"
+          class:list={[
+            "max-sm:hidden",
+            { hidden: !SITE.editPost.enabled || hideEditPost },
+          ]}>|</span
+        >
+        <EditPost {hideEditPost} {post} class="max-sm:hidden" />
+      </div>
+      <article
+        id="article"
+        class="app-prose mt-8 w-full max-w-none prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg)"
+      >
+        <Content />
+      </article>
+    </section>
 
     <hr class="my-8 border-dashed" />
 
@@ -133,12 +146,12 @@ const nextPost =
       {
         prevPost && (
           <a
-            href={getPath(prevPost.id, prevPost.filePath)}
+            href={localizePath(getPath(prevPost.id, prevPost.filePath), locale)}
             class="flex w-full gap-1 hover:opacity-75"
           >
             <IconChevronLeft class="inline-block flex-none rtl:rotate-180" />
             <div>
-              <span>Previous Post</span>
+              <span>{copy.pages.previousPost}</span>
               <div class="text-sm text-accent/85">{prevPost.title}</div>
             </div>
           </a>
@@ -147,11 +160,11 @@ const nextPost =
       {
         nextPost && (
           <a
-            href={getPath(nextPost.id, nextPost.filePath)}
+            href={localizePath(getPath(nextPost.id, nextPost.filePath), locale)}
             class="flex w-full justify-end gap-1 text-end hover:opacity-75 sm:col-start-2"
           >
             <div>
-              <span>Next Post</span>
+              <span>{copy.pages.nextPost}</span>
               <div class="text-sm text-accent/85">{nextPost.title}</div>
             </div>
             <IconChevronRight class="inline-block flex-none rtl:rotate-180" />

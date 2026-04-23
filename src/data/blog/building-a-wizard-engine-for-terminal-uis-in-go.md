@@ -11,6 +11,8 @@ tags:
   - cli
   - bubble-tea
 description: How we built a declarative wizard engine on top of Bubble Tea to orchestrate a 13-step VM deployment flow in the Verda CLI — with dependency tracking, back-navigation, and actor-model views.
+locale: en
+translationKey: building-a-wizard-engine-for-terminal-uis-in-go
 ---
 
 ![Verda CLI wizard demo — 13-step VM deployment flow with progress bar, dynamic choices, and back-navigation](/images/wizard-demo.gif)

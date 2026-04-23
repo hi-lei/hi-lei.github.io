@@ -1,0 +1,175 @@
+---
+import IconGitHub from "@/assets/icons/IconGitHub.svg";
+import IconLinkedin from "@/assets/icons/IconLinkedin.svg";
+import IconBrandX from "@/assets/icons/IconBrandX.svg";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+import {
+  getLocaleFromPath,
+  localizePath,
+  stripLocaleFromPath,
+  t,
+} from "@/i18n";
+
+type Props = {
+  currentPath: string;
+  langLinks?: Partial<Record<"en" | "cn", string>>;
+};
+
+const { currentPath, langLinks } = Astro.props;
+const locale = getLocaleFromPath(currentPath);
+const copy = t(locale);
+const normalizedPath =
+  stripLocaleFromPath(currentPath).replace(/\/+$/, "") || "/";
+
+const navItems = [
+  { href: "/", label: copy.nav.home, active: normalizedPath === "/" },
+  {
+    href: "/posts/",
+    label: copy.nav.posts,
+    active: normalizedPath.startsWith("/posts"),
+  },
+  {
+    href: "/tags/",
+    label: copy.nav.tags,
+    active: normalizedPath.startsWith("/tags"),
+  },
+  {
+    href: "/cv/",
+    label: copy.nav.cv,
+    active: normalizedPath.startsWith("/cv"),
+  },
+  {
+    href: "/about/",
+    label: copy.nav.about,
+    active: normalizedPath.startsWith("/about"),
+  },
+  {
+    href: "/archives/",
+    label: copy.nav.archives,
+    active: normalizedPath.startsWith("/archives"),
+  },
+];
+---
+
+<div class="drawer-side z-40">
+  <label for="site-drawer" class="drawer-overlay" aria-label="Close menu"
+  ></label>
+  <aside
+    class="flex min-h-full w-[19rem] flex-col bg-base-200 px-2 pt-2 text-base-content"
+  >
+    <div class="mx-auto mt-5 mb-4 w-fit">
+      <a href={localizePath("/", locale)}>
+        <div
+          class="avatar m-auto block transition duration-150 ease-in-out hover:scale-[102%]"
+        >
+          <div class="w-[8.5rem] rounded-full">
+            <img
+              src="https://github.com/hi-lei.png"
+              alt="Meng Lei profile image"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="px-4 pb-5 text-center">
+      <div class="text-xl font-semibold">Meng Lei</div>
+      <div class="text-sm opacity-70">Solo Builder</div>
+    </div>
+
+    <ul class="menu grow overflow-y-auto menu-md">
+      {
+        navItems.map(item => (
+          <li>
+            <a
+              href={localizePath(item.href, locale)}
+              class:list={["py-3 text-base", { "bg-base-300": item.active }]}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+      <li>
+        <a
+          class="py-3 text-base"
+          href="mailto:menglei81@gmail.com"
+          target="_blank"
+          referrerpolicy="no-referrer-when-downgrade"
+        >
+          {copy.nav.contact}
+        </a>
+      </li>
+    </ul>
+
+    <div
+      class="pointer-events-none sticky bottom-10 h-12 bg-base-200 [mask-image:linear-gradient(transparent,#000000)]"
+    >
+    </div>
+
+    <div
+      class="sticky bottom-0 flex flex-col items-center gap-4 bg-base-200 px-4 pt-1 pb-5"
+    >
+      <LanguageSwitcher
+        currentPath={currentPath}
+        currentLocale={locale}
+        {langLinks}
+      />
+      <div class="flex items-center justify-center gap-4">
+        <a
+          href="https://github.com/hi-lei"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="GitHub"
+          title="GitHub"
+          class="transition-opacity hover:opacity-70"
+        >
+          <IconGitHub class="size-6 fill-none stroke-current" />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/meng-lei-837a0420/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="LinkedIn"
+          title="LinkedIn"
+          class="transition-opacity hover:opacity-70"
+        >
+          <IconLinkedin class="size-6 fill-none stroke-current" />
+        </a>
+        <a
+          href="https://x.com/lei_6c6569"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="X"
+          title="X"
+          class="transition-opacity hover:opacity-70"
+        >
+          <IconBrandX class="size-6 fill-none stroke-current" />
+        </a>
+        <a
+          href="/rss.xml"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="RSS Feed"
+          title="RSS Feed"
+          class="transition-opacity hover:opacity-70"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            class="size-6 fill-current"
+          >
+            <path
+              d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"
+            ></path>
+            <path
+              d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"
+            ></path>
+            <circle cx="6" cy="18" r="2"></circle>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </aside>
+</div>

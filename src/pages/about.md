@@ -3,13 +3,23 @@ layout: ../layouts/AboutLayout.astro
 title: "About"
 ---
 
-Hi, I'm **Lei** — a system architect and Go engineer. I work on distributed backend systems and AI infrastructure.
+Hi, I'm **Lei** — a system architect and software engineer with 10+ years of experience building scalable platforms, infrastructure, and developer tools. I work at the intersection of **AI infrastructure, developer tooling, and AI agents**.
 
 ## What I do
 
-At [**Verda Cloud**](https://verda.com) (formerly DataCrunch), I architected and built from scratch the inference and container serverless platform, including the billing systems. My focus is on building scalable GPU cloud infrastructure that serves both humans and AI agents as first-class users.
+Today my focus is on **AI inference platforms, infrastructure tooling, and distributed systems** that support production-grade AI workloads — spanning architecture, deployment, and day-to-day operations. On the backend I'm polyglot — I build production systems in **Go, TypeScript, Python, and Rust** — and pick the language that fits the problem, not the other way around.
 
-Previously, I led architecture and backend development of **Takomo.ai** — a no-code AI platform for multimodal workflows — designing its cloud-native, serverless infrastructure and dynamic API system.
+At [**Verda Cloud**](https://verda.com) (formerly DataCrunch), I architected and built from scratch the inference and container serverless platforms, including the billing systems, so that humans and AI agents can both use our GPU cloud as first-class users.
+
+Previously, I led architecture and backend development at **Takomo.ai** — a no-code AI platform for multimodal workflows — designing its cloud-native, serverless infrastructure and dynamic API system.
+
+## How I think about the work
+
+I'm particularly interested in **AI infrastructure, AI agents, and the tooling layer** that makes advanced AI usable in real products. I enjoy designing systems for scale, reliability, and long-term maintainability, while staying close to fast-moving advances in the AI space.
+
+## Solo builder
+
+I'm also an independent builder who enjoys creating products from zero to one. I care about building useful technology, moving fast with clarity, and turning complex ideas into practical systems with real impact.
 
 ## Open source
 
@@ -22,14 +32,14 @@ I'm an active open source author in the Verda ecosystem:
 
 ## Focus areas
 
+- AI inference platforms and infrastructure tooling
 - Scalable backend systems and distributed architecture
-- AI productization at scale
-- CLI tooling and terminal UIs in Go
+- CLI tooling and terminal UIs
 - AI agents as infrastructure users (MCP, agent-mode CLIs)
-
-I'm an AI agent enthusiast — I think the boundary between "developer tool" and "AI agent tool" is disappearing, and I design my CLIs with both in mind.
 
 ## Find me
 
-- GitHub: [@nusmql](https://github.com/nusmql)
+Based between **Singapore** and **Finland**.
+
+- GitHub: [@hi-lei](https://github.com/hi-lei)
 - LinkedIn: [meng-lei](https://www.linkedin.com/in/meng-lei-837a0420/)

@@ -1,6 +1,7 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 import { SITE } from "@/config";
+import { LOCALES } from "@/i18n";
 
 export const BLOG_PATH = "src/data/blog";
 
@@ -12,6 +13,8 @@ const blog = defineCollection({
       pubDatetime: z.date(),
       modDatetime: z.date().optional().nullable(),
       title: z.string(),
+      locale: z.enum(LOCALES).default("en"),
+      translationKey: z.string().optional(),
       featured: z.boolean().optional(),
       draft: z.boolean().optional(),
       tags: z.array(z.string()).default(["others"]),

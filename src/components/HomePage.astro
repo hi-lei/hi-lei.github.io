@@ -1,0 +1,103 @@
+---
+import { getCollection } from "astro:content";
+import dayjs from "dayjs";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import AstrofyHorizontalCard from "@/components/AstrofyHorizontalCard.astro";
+import getSortedPosts from "@/utils/getSortedPosts";
+import {
+  getLocalizedPosts,
+  getLocalizedPostPath,
+} from "@/utils/localizedPosts";
+import { SITE } from "@/config";
+import { localizePath, t, type Locale } from "@/i18n";
+
+type Props = {
+  locale: Locale;
+};
+
+const { locale } = Astro.props;
+const copy = t(locale);
+const posts = await getCollection("blog");
+const localizedPosts = getLocalizedPosts(posts, locale);
+const sortedPosts = getSortedPosts(localizedPosts);
+const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
+const spotlightPosts = (
+  featuredPosts.length > 0 ? featuredPosts : sortedPosts
+).slice(0, 3);
+const latestPosts = sortedPosts.slice(0, 3);
+---
+
+<Layout
+  langLinks={{
+    en: localizePath("/", "en"),
+    cn: localizePath("/", "cn"),
+  }}
+>
+  <Header />
+
+  <main id="main-content" class="page-shell">
+    <div class="mt-5 pb-12">
+      <div class="py-1 text-lg">{copy.home.greeting} 👋</div>
+      <div class="text-4xl font-bold">{copy.home.headline}</div>
+      <div class="py-3 text-2xl font-bold">{copy.home.role}</div>
+      <div class="py-2 text-base">
+        {copy.home.intro}
+      </div>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a class="btn" href={SITE.profile} target="_blank" rel="noreferrer">
+          LinkedIn
+        </a>
+        <a
+          href="https://github.com/hi-lei"
+          target="_blank"
+          rel="noreferrer"
+          class="btn btn-outline"
+        >
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <div class="mb-2 w-full text-2xl font-bold">{copy.home.featured}</div>
+    </div>
+
+    {
+      spotlightPosts.map(post => (
+        <>
+          <AstrofyHorizontalCard
+            title={post.data.title}
+            desc={post.data.description}
+            url={getLocalizedPostPath(post, locale)}
+            target="_self"
+            meta={dayjs(post.data.pubDatetime).format("MMM D, YYYY")}
+          />
+          <div class="divider my-0" />
+        </>
+      ))
+    }
+
+    <div>
+      <div class="mt-10 mb-5 w-full text-2xl font-bold">{copy.home.latest}</div>
+    </div>
+
+    {
+      latestPosts.map(post => (
+        <>
+          <AstrofyHorizontalCard
+            title={post.data.title}
+            desc={post.data.description}
+            url={getLocalizedPostPath(post, locale)}
+            target="_self"
+            meta={dayjs(post.data.pubDatetime).format("MMM D, YYYY")}
+          />
+          <div class="divider my-0" />
+        </>
+      ))
+    }
+  </main>
+
+  <Footer />
+</Layout>
