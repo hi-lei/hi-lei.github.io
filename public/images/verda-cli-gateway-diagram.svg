@@ -1,0 +1,158 @@
+<svg width="1664" height="945" viewBox="0 0 1664 945" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">One Gateway, Three Interfaces</title>
+  <desc id="desc">A polished diagram showing human terminal, AI agent, and IDE assistant workflows flowing into verda-cli, with Verda Cloud on the right and verdagostack as the foundation inside the CLI block.</desc>
+  <defs>
+    <linearGradient id="pageBg" x1="52" y1="48" x2="1612" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FBFDFF"/>
+      <stop offset="1" stop-color="#EEF4FF"/>
+    </linearGradient>
+    <linearGradient id="cliBg" x1="615" y1="228" x2="1062" y2="753" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#13284A"/>
+      <stop offset="0.72" stop-color="#172E53"/>
+      <stop offset="1" stop-color="#0F2442"/>
+    </linearGradient>
+    <linearGradient id="stackBg" x1="694" y1="586" x2="1015" y2="735" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#233A63"/>
+      <stop offset="0.58" stop-color="#2A365C"/>
+      <stop offset="1" stop-color="#A54A24"/>
+    </linearGradient>
+    <linearGradient id="cloudBg" x1="1143" y1="234" x2="1560" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2F6FEB"/>
+      <stop offset="1" stop-color="#2048AA"/>
+    </linearGradient>
+    <linearGradient id="iconTile" x1="113" y1="246" x2="214" y2="347" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E8F0FF"/>
+      <stop offset="1" stop-color="#DBE7FF"/>
+    </linearGradient>
+    <linearGradient id="footerBg" x1="88" y1="802" x2="1575" y2="882" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5F9FF"/>
+      <stop offset="1" stop-color="#EEF4FF"/>
+    </linearGradient>
+    <filter id="softShadow" x="0" y="0" width="1664" height="945" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="18" stdDeviation="28" flood-color="#27406B" flood-opacity="0.16"/>
+    </filter>
+    <filter id="panelShadow" x="0" y="0" width="1664" height="945" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="16" stdDeviation="26" flood-color="#1E3A8A" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrowHead" markerWidth="16" markerHeight="16" refX="12" refY="8" orient="auto">
+      <path d="M0 0L14 8L0 16V0Z" fill="#2E63D7"/>
+    </marker>
+  </defs>
+
+  <rect width="1664" height="945" fill="#E8EEF8"/>
+  <rect x="24" y="21" width="1588" height="903" rx="34" fill="url(#pageBg)"/>
+
+  <text x="90" y="111" fill="#081633" font-family="Helvetica, Arial, sans-serif" font-size="64" font-weight="700">One Gateway, Three Interfaces</text>
+  <text x="90" y="172" fill="#3A4F78" font-family="Helvetica, Arial, sans-serif" font-size="31">A personal view of how verda-cli connects humans, AI agents, and IDE workflows</text>
+
+  <g filter="url(#panelShadow)">
+    <rect x="90" y="225" width="422" height="154" rx="28" fill="#FFFFFF"/>
+    <rect x="90" y="225" width="422" height="154" rx="28" stroke="#D8E4FA" stroke-width="2"/>
+    <rect x="114" y="249" width="102" height="102" rx="22" fill="url(#iconTile)"/>
+    <circle cx="165" cy="287" r="14" fill="#2C59BE"/>
+    <path d="M141 329C141 314.641 152.641 303 167 303H168C182.359 303 194 314.641 194 329V331H141V329Z" fill="#2C59BE"/>
+    <text x="242" y="276" fill="#101C3A" font-family="Helvetica, Arial, sans-serif" font-size="28" font-weight="700">Human in Terminal</text>
+    <text x="242" y="318" fill="#314A79" font-family="Helvetica, Arial, sans-serif" font-size="24">Interactive commands</text>
+    <text x="242" y="359" fill="#314A79" font-family="Helvetica, Arial, sans-serif" font-size="24">and scripts</text>
+
+    <rect x="90" y="408" width="422" height="154" rx="28" fill="#FFFFFF"/>
+    <rect x="90" y="408" width="422" height="154" rx="28" stroke="#D8E4FA" stroke-width="2"/>
+    <rect x="114" y="432" width="102" height="102" rx="22" fill="url(#iconTile)"/>
+    <rect x="145" y="464" width="40" height="34" rx="9" stroke="#2C59BE" stroke-width="5"/>
+    <circle cx="155" cy="480" r="4" fill="#2C59BE"/>
+    <circle cx="175" cy="480" r="4" fill="#2C59BE"/>
+    <path d="M155 494C160.333 499.333 169.667 499.333 175 494" stroke="#2C59BE" stroke-width="5" stroke-linecap="round"/>
+    <path d="M165 455V447" stroke="#2C59BE" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="165" cy="441" r="6" fill="#2C59BE"/>
+    <path d="M134 480H129V494" stroke="#2C59BE" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M196 480H201V494" stroke="#2C59BE" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="242" y="459" fill="#101C3A" font-family="Helvetica, Arial, sans-serif" font-size="28" font-weight="700">AI Agent via MCP</text>
+    <text x="242" y="501" fill="#314A79" font-family="Helvetica, Arial, sans-serif" font-size="24">Structured tools and</text>
+    <text x="242" y="542" fill="#314A79" font-family="Helvetica, Arial, sans-serif" font-size="24">JSON output</text>
+
+    <rect x="90" y="591" width="422" height="160" rx="28" fill="#FFFFFF"/>
+    <rect x="90" y="591" width="422" height="160" rx="28" stroke="#D8E4FA" stroke-width="2"/>
+    <rect x="114" y="617" width="102" height="106" rx="22" fill="url(#iconTile)"/>
+    <path d="M136 671L149 658" stroke="#2C59BE" stroke-width="7" stroke-linecap="round"/>
+    <path d="M149 658L136 645" stroke="#2C59BE" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M194 671L181 658" stroke="#2C59BE" stroke-width="7" stroke-linecap="round"/>
+    <path d="M181 658L194 645" stroke="#2C59BE" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M164 643L154 682" stroke="#2C59BE" stroke-width="7" stroke-linecap="round"/>
+    <text x="242" y="646" fill="#101C3A" font-family="Helvetica, Arial, sans-serif" font-size="28" font-weight="700">IDE + Assistant</text>
+    <text x="242" y="688" fill="#314A79" font-family="Helvetica, Arial, sans-serif" font-size="24">Editor workflows and</text>
+    <text x="242" y="729" fill="#314A79" font-family="Helvetica, Arial, sans-serif" font-size="24">embedded terminal</text>
+
+    <rect x="618" y="232" width="431" height="513" rx="40" fill="url(#cliBg)"/>
+    <text x="834" y="312" text-anchor="middle" fill="#F4F8FF" font-family="Helvetica, Arial, sans-serif" font-size="24" letter-spacing="0.16em">ONE COMMAND SURFACE</text>
+    <path d="M800 388L820 408L800 428" stroke="#5290FF" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M849 426H869" stroke="#5290FF" stroke-width="9" stroke-linecap="round"/>
+    <text x="834" y="490" text-anchor="middle" fill="#FFFFFF" font-family="Helvetica, Arial, sans-serif" font-size="66" font-weight="700">verda-cli</text>
+    <text x="834" y="546" text-anchor="middle" fill="#DCE7FA" font-family="Helvetica, Arial, sans-serif" font-size="28">one gateway</text>
+
+    <rect x="655" y="587" width="355" height="135" rx="30" fill="url(#stackBg)"/>
+    <rect x="655" y="587" width="355" height="135" rx="30" stroke="#5E769D" stroke-width="2"/>
+    <text x="833" y="633" text-anchor="middle" fill="#F5F8FF" font-family="Helvetica, Arial, sans-serif" font-size="22" letter-spacing="0.14em">FOUNDATION</text>
+    <text x="833" y="683" text-anchor="middle" fill="#FFFFFF" font-family="Helvetica, Arial, sans-serif" font-size="35" font-weight="700">verdagostack</text>
+
+    <rect x="1145" y="238" width="415" height="509" rx="42" fill="url(#cloudBg)"/>
+    <g opacity="0.92">
+      <circle cx="1228" cy="315" r="22" fill="#9ED0FF"/>
+      <circle cx="1248" cy="300" r="26" fill="#AEDDFF"/>
+      <circle cx="1271" cy="314" r="18" fill="#A7D7FF"/>
+      <rect x="1206" y="315" width="78" height="31" rx="15.5" fill="#BEE2FF"/>
+    </g>
+    <text x="1288" y="334" fill="#FFFFFF" font-family="Helvetica, Arial, sans-serif" font-size="35" font-weight="700">Verda Cloud</text>
+
+    <rect x="1200" y="402" width="300" height="2" fill="#4573D2" opacity="0.65"/>
+    <rect x="1200" y="483" width="300" height="2" fill="#4573D2" opacity="0.65"/>
+    <rect x="1200" y="564" width="300" height="2" fill="#4573D2" opacity="0.65"/>
+
+    <g>
+      <rect x="1207" y="355" width="30" height="12" rx="2" stroke="#DDEBFF" stroke-width="4"/>
+      <rect x="1207" y="372" width="30" height="12" rx="2" stroke="#DDEBFF" stroke-width="4"/>
+      <circle cx="1215" cy="362" r="2.5" fill="#DDEBFF"/>
+      <circle cx="1215" cy="379" r="2.5" fill="#DDEBFF"/>
+      <text x="1262" y="388" fill="#FFFFFF" font-family="Helvetica, Arial, sans-serif" font-size="25">Instances</text>
+    </g>
+
+    <g>
+      <ellipse cx="1222" cy="446" rx="14" ry="6.5" stroke="#DDEBFF" stroke-width="4"/>
+      <path d="M1208 446V468C1208 471.59 1214.268 474.5 1222 474.5C1229.732 474.5 1236 471.59 1236 468V446" stroke="#DDEBFF" stroke-width="4"/>
+      <path d="M1208 456C1208 459.59 1214.268 462.5 1222 462.5C1229.732 462.5 1236 459.59 1236 456" stroke="#DDEBFF" stroke-width="4"/>
+      <text x="1262" y="455" fill="#FFFFFF" font-family="Helvetica, Arial, sans-serif" font-size="25">Volumes</text>
+    </g>
+
+    <g>
+      <circle cx="1215" cy="521" r="7" stroke="#DDEBFF" stroke-width="4"/>
+      <circle cx="1229" cy="540" r="7" stroke="#DDEBFF" stroke-width="4"/>
+      <circle cx="1201" cy="540" r="7" stroke="#DDEBFF" stroke-width="4"/>
+      <path d="M1211 526L1205 534" stroke="#DDEBFF" stroke-width="4" stroke-linecap="round"/>
+      <path d="M1219 526L1225 534" stroke="#DDEBFF" stroke-width="4" stroke-linecap="round"/>
+      <path d="M1208 540H1222" stroke="#DDEBFF" stroke-width="4" stroke-linecap="round"/>
+      <text x="1262" y="529" fill="#FFFFFF" font-family="Helvetica, Arial, sans-serif" font-size="25">Clusters</text>
+    </g>
+
+    <g>
+      <path d="M1209 600C1209 591.716 1215.716 585 1224 585C1230.047 585 1235.259 588.58 1237.598 593.74C1244.028 593.972 1249.167 599.251 1249.167 605.74C1249.167 611.771 1244.277 616.667 1238.25 616.667H1224.333C1215.868 616.667 1209 609.799 1209 601.333V600Z" stroke="#DDEBFF" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M1223 590V611" stroke="#DDEBFF" stroke-width="4" stroke-linecap="round"/>
+      <path d="M1218 596L1223 601L1228 596" stroke="#DDEBFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M1233 590V611" stroke="#DDEBFF" stroke-width="4" stroke-linecap="round"/>
+      <path d="M1228 605L1233 600L1238 605" stroke="#DDEBFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="1262" y="607" fill="#FFFFFF" font-family="Helvetica, Arial, sans-serif" font-size="24">Inference and</text>
+      <text x="1262" y="649" fill="#FFFFFF" font-family="Helvetica, Arial, sans-serif" font-size="24">Containers</text>
+    </g>
+  </g>
+
+  <path d="M512 302H611" stroke="#2E63D7" stroke-width="4" stroke-linecap="round" marker-end="url(#arrowHead)"/>
+  <path d="M512 485H611" stroke="#2E63D7" stroke-width="4" stroke-linecap="round" marker-end="url(#arrowHead)"/>
+  <path d="M512 672H611" stroke="#2E63D7" stroke-width="4" stroke-linecap="round" marker-end="url(#arrowHead)"/>
+  <path d="M1048 484H1130" stroke="#2E63D7" stroke-width="4" stroke-linecap="round" marker-end="url(#arrowHead)"/>
+
+  <g filter="url(#softShadow)">
+    <rect x="89" y="791" width="1476" height="76" rx="32" fill="url(#footerBg)"/>
+    <rect x="89" y="791" width="1476" height="76" rx="32" stroke="#D3E2FF" stroke-width="2"/>
+    <circle cx="387" cy="829" r="19" fill="#4A8AF8"/>
+    <path d="M378 829L385 836L397 822" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="430" y="838" fill="#5671A7" font-family="Helvetica, Arial, sans-serif" font-size="22">Three interfaces share one gateway instead of requiring three separate integrations.</text>
+  </g>
+</svg>

@@ -10,36 +10,26 @@ tags:
   - ai-agents
   - mcp
   - infrastructure
-description: How verda-cli became a unified gateway for humans, AI agents, and IDE integrations — and why CLI tools are the native interface for LLMs managing cloud infrastructure.
+description: A personal view on how verda-cli became a unified gateway for humans, AI agents, and IDE integrations — and why CLI tools may become one of the defining interfaces for AI-era infrastructure.
 ---
 
-*I'm the author of [verda-cli](https://github.com/verda-cloud/verda-cli) and [verdagostack](https://github.com/verda-cloud/verdagostack) at [Verda Cloud](https://verda.com). We're building GPU cloud infrastructure, and this is the story of how our CLI became the center of the developer ecosystem.*
+_I'm the author of [verda-cli](https://github.com/verda-cloud/verda-cli) and [verdagostack](https://github.com/verda-cloud/verdagostack) at [Verda Cloud](https://verda.com). This post reflects my personal view, not a company position, on how our CLI evolved into a shared interface for humans, AI agents, and IDE workflows._
 
 ## Table of contents
 
 ## Why a CLI at the Center
 
-When people think of a CLI tool, they think of a human typing commands in a terminal. That's how it starts. But a well-designed CLI becomes something more — a **unified gateway** between every type of user and your platform.
+Most people still think of a CLI as a tool for hardcore developers or terminal geeks typing commands by hand. I see it differently. To me, the CLI is becoming one of the interfaces of the future: not just something a human uses in a terminal, but a layer that can also serve AI agents and IDEs.
 
-For Verda Cloud, that's exactly what happened. We built [verda-cli](https://github.com/verda-cloud/verda-cli) to manage GPU cloud infrastructure — deploy VMs, attach volumes, configure SSH keys, manage billing. It started as a terminal tool. But the same operations that a human needs — create an instance, check availability, estimate cost — are the same operations that an AI agent needs, and the same operations that an IDE integration needs.
+While building [verda-cli](https://github.com/verda-cloud/verda-cli) for Verda Cloud, I started to feel the CLI had become something bigger than a terminal utility. The same operations a human needs — create an instance, check availability, estimate cost — are also the operations an AI agent needs, and increasingly the operations an IDE workflow needs.
 
-Instead of building three separate integration points, we built one:
+That led me to a simple mental model: one gateway, three interfaces.
 
-```
-                      ┌──────────────┐
-  AI Agents ─────────►│              │
-                      │  verda-cli   │
-  Terminal  ─────────►│              ├──────► Verda Cloud
-                      │ ┌──────────┐ │        (instances, volumes,
-  IDE       ─────────►│ │verdago-  │ │         clusters, inference,
-                      │ │stack     │ │         containers)
-                      │ └──────────┘ │
-                      └──────────────┘
-```
+![Diagram showing three interfaces, human in terminal, AI agent via MCP, and IDE plus assistant, flowing through verda-cli into Verda Cloud, with verdagostack beneath as the foundation.](/images/verda-cli-gateway-diagram.svg)
 
-Three entry points. One tool. One set of commands. One authentication layer. The CLI is the control plane — everything flows through it.
+Three entry points. One tool. One command surface. One authentication layer. In my view, that is when a CLI stops being just a developer utility and starts acting more like a control plane.
 
-This isn't a new idea. The `aws` CLI, `gcloud`, and `kubectl` all serve as unified gateways. But what's different in 2026 is who's using them. It's no longer just humans. AI coding agents — Claude Code, Cursor, Codex — are becoming first-class users of infrastructure tools. And that changes how you design a CLI.
+This is not a brand-new idea. The `aws` CLI, `gcloud`, and `kubectl` already act as unified gateways. What feels different in 2026 is who is using them. It is no longer just humans. AI coding agents — Claude Code, Cursor, Codex — are becoming first-class users of infrastructure tools, and that changes how I think a CLI should be designed.
 
 ## Three Interfaces, One CLI
 
@@ -117,17 +107,17 @@ The diagram shows verdagostack sitting inside verda-cli. It's our shared Go libr
 
 Why does this matter for the ecosystem story? Because the CLI isn't a monolith. It's assembled from composable packages:
 
-| Package | What it does |
-|---------|-------------|
-| `pkg/tui` | Prompter and Status interfaces — abstract away the terminal UI backend |
-| `pkg/tui/bubbletea` | Bubble Tea backend with 8 built-in themes |
-| `pkg/tui/wizard` | The wizard engine — multi-step flows with dependency tracking |
-| `pkg/app` | CLI application framework built on Cobra and Viper |
-| `pkg/options` | Flag-driven configuration structs with validation |
-| `pkg/log` | Structured logging backed by zap |
-| `pkg/otel` | OpenTelemetry tracing and metrics |
-| `pkg/server` | HTTP, gRPC, and Gin server implementations |
-| `pkg/db` | Database constructors — PostgreSQL, CockroachDB, MySQL, Valkey |
+| Package             | What it does                                                           |
+| ------------------- | ---------------------------------------------------------------------- |
+| `pkg/tui`           | Prompter and Status interfaces — abstract away the terminal UI backend |
+| `pkg/tui/bubbletea` | Bubble Tea backend with 8 built-in themes                              |
+| `pkg/tui/wizard`    | The wizard engine — multi-step flows with dependency tracking          |
+| `pkg/app`           | CLI application framework built on Cobra and Viper                     |
+| `pkg/options`       | Flag-driven configuration structs with validation                      |
+| `pkg/log`           | Structured logging backed by zap                                       |
+| `pkg/otel`          | OpenTelemetry tracing and metrics                                      |
+| `pkg/server`        | HTTP, gRPC, and Gin server implementations                             |
+| `pkg/db`            | Database constructors — PostgreSQL, CockroachDB, MySQL, Valkey         |
 
 The CLI uses `pkg/tui`, `pkg/app`, and `pkg/options`. But the same libraries power backend services too. A team building a gRPC service on Verda Cloud uses `pkg/server`, `pkg/db`, and `pkg/otel` — same patterns, same conventions, same logging format.
 
